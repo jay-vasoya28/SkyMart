@@ -18,7 +18,7 @@ const ActivitySummary = () => {
     {
       id: 2,
       icon: <Wallet size={20} />,
-      value: `$${total}`,
+      value: `$${total.toFixed(2)}`,
       title: "Cart Value",
       subtitle: "Ready to checkout",
       color: "bg-green-500/10 text-green-400",

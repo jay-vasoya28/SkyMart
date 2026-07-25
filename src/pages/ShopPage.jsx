@@ -64,32 +64,26 @@ const ShopPage = () => {
     }
   };
 
+  
+
   useEffect(() => {
-    const filtered =
+    let result =
       selectCategory === "all"
-        ? apiData
+        ? [...apiData]
         : apiData.filter((item) => item.category === selectCategory);
 
-    setProducts(filtered);
-  }, [selectCategory, apiData]);
-
-  useEffect(() => {
-    if (sortBy === "featured") {
-      setProducts(apiData);
-    } else if (sortBy === "low-high") {
-      const newPro = [...apiData].sort((a, b) => a.price - b.price);
-      setProducts(newPro);
+    if (sortBy === "low-high") {
+      result.sort((a, b) => a.price - b.price);
     } else if (sortBy === "high-low") {
-      const newPro = [...apiData].sort((a, b) => b.price - a.price);
-      setProducts(newPro);
+      result.sort((a, b) => b.price - a.price);
     } else if (sortBy === "top-rated") {
-      const newPro = [...apiData].filter((item) => item.rating.rate > 3);
-      setProducts(newPro);
+      result = result.filter((item) => item.rating.rate > 3);
     } else if (sortBy === "low-rated") {
-      const newPro = [...apiData].filter((item) => item.rating.rate <= 3);
-      setProducts(newPro);
+      result = result.filter((item) => item.rating.rate <= 3);
     }
-  }, [sortBy, apiData]);
+
+    setProducts(result);
+  }, [apiData, selectCategory, sortBy]);
 
   return (
     <section className="space-y-8">

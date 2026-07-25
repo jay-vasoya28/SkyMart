@@ -14,13 +14,15 @@ const ShopByCategory = () => {
       description: "Discover premium gadgets and accessories.",
       icon: <Laptop size={22} />,
       color: "bg-cyan-500/10 text-cyan-400",
+      value: "electronics",
     },
     {
       id: 2,
-      title: "Jewelry",
+      title: "Jewelery",
       description: "Elegant collections for every occasion.",
       icon: <Gem size={22} />,
       color: "bg-yellow-500/10 text-yellow-400",
+      value: "jewelery",
     },
     {
       id: 3,
@@ -28,6 +30,7 @@ const ShopByCategory = () => {
       description: "Premium fashion for everyday style.",
       icon: <Shirt size={22} />,
       color: "bg-indigo-500/10 text-indigo-400",
+      value: "men's clothing",
     },
     {
       id: 4,
@@ -35,6 +38,7 @@ const ShopByCategory = () => {
       description: "Trending outfits and latest collections.",
       icon: <Handbag size={22} />,
       color: "bg-pink-500/10 text-pink-400",
+      value: "women's clothing",
     },
   ];
 
@@ -65,7 +69,7 @@ const ShopByCategory = () => {
         {categories.map((item) => (
           <div
             onClick={() => {
-              setSelectCategory(item.title.toLowerCase());
+              setSelectCategory(item.value);
               naviget("/welcome/shop");
             }}
             key={item.id}

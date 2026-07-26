@@ -9,7 +9,6 @@ const CartPage = () => {
   const [showModal, setShowModal] = useState(false);
   const { cartItems, setCartItems } = useContext(MyStore);
 
-  // Temporary Calculation
  let {
    subtotal,
    setSubtotal,
@@ -24,7 +23,7 @@ const CartPage = () => {
       const timer = setTimeout(() => {
         setShowModal(false);
         setCartItems([]);
-        navigate("/welcome/home"); // ya "/welcome/shop"
+        navigate("/welcome/home");
       }, 3000);
 
       return () => clearTimeout(timer);

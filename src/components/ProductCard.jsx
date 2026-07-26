@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Star, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router";
 import { MyStore } from "../context/MyContext";
+import toast from "react-hot-toast";
 
 const ProductCard = ({ product, isInCart }) => {
   let { cartItems, setCartItems } = useContext(MyStore);
@@ -9,6 +10,7 @@ const ProductCard = ({ product, isInCart }) => {
   let addToCart = (e) => {
     e.stopPropagation();
     setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
+    toast.success("Added to cart successfully! 🛍️");
   };
 
   let navigate = useNavigate();

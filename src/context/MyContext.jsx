@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const MyStore = createContext();
 
@@ -86,6 +87,7 @@ export const ContextProvider = ({ children }) => {
 
   let deleteProductInCart = (id) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
+    toast.success("Product removed from cart 🗑️");
   };
 
   return (

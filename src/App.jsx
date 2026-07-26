@@ -8,6 +8,7 @@ import ShopPage from "./pages/ShopPage";
 import AboutPage from "./pages/AboutPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CartPage from "./pages/CartPage";
+import ProtectedRoute from "./route/ProtectedRoute";
 
 const App = () => {
   return (
@@ -15,12 +16,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/welcome" element={<WebLayOut />}>
-          <Route path="home" element={<HomePage />} />
-          <Route path="shop" element={<ShopPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="shop/:id" element={<ProductDetailPage />} />
-          <Route path="cart" element={<CartPage />} />
+        <Route path="/welcome" element={<ProtectedRoute />}>
+          <Route path="" element={<WebLayOut />}>
+            <Route path="home" element={<HomePage />} />
+            <Route path="shop" element={<ShopPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="shop/:id" element={<ProductDetailPage />} />
+            <Route path="cart" element={<CartPage />} />
+          </Route>
         </Route>
       </Routes>
     </div>

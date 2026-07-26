@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { MyStore } from "../context/MyContext";
+import toast from "react-hot-toast";
 
 const ProductDetailPage = () => {
   let { id } = useParams();
@@ -20,6 +21,7 @@ const ProductDetailPage = () => {
   let addToCart = (e) => {
     e.stopPropagation();
     setCartItems((prev) => [...prev, { ...singleProductData, quantity: 1 }]);
+    toast.success("Added to cart successfully! 🛍️");
   };
 
   useEffect(() => {
